@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Notifications Analytics Dashboard
 
-## Getting Started
+A single-page dashboard visualizing notification data from the JSONPlaceholder API, with interactive filters, KPI cards, charts, and a notifications table supporting read/unread state management.
 
-First, run the development server:
+## 🚀 Features
+
+- **Real-time KPI Tracking**: Total notifications, read/unread counts, unique senders
+- **Advanced Filtering**: Combined status, category, and sender search filters with AND logic
+- **Responsive Design**: Mobile-friendly interface built with Tailwind CSS
+- **Comprehensive Testing**: Filter combination and KPI update tests
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Charts**: Recharts
+- **Icons**: Lucide React
+- **Testing**: Jest + React Testing Library
+- **State Management**: React Context 
+
+## 📦 Installation
 
 ```bash
+# Clone the repository
+git clone <repository-url>
+cd notifications-dashboard-gk
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔄 Key Design Decisions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+-> State Management: React Context with useMemo for efficient derived state (filtered notifications, KPIs, chart data).
 
-## Learn More
+-> Data Fetching: Custom hook useNotifications handles API calls.
 
-To learn more about Next.js, take a look at the following resources:
+-> Race-Condition Handling on Refresh: Uses AbortController to cancel in-flight requests. Rapid refresh clicks abort previous fetches, ensuring only the latest response updates the state and preventing stale/mixed data.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-> Filtering: Central AND logic applied to all components (KPIs, charts, table).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+-> UI: Tailwind CSS for styling, Lucide icons for modern visuals, Recharts for charts.
 
-## Deploy on Vercel
+## 🧪 Testing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Run all tests
+npm test
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Run tests in watch mode
+npm run test:watch
+
+```
+
+## 🔄 Limitations
+
+-> Read/unread state is client-side only (resets on refresh).
+
+-> No pagination in the notifications table.
+
+-> No persistence or backend integration.
+
+## 🔄Future Improvements
+
+-> Persist read state with localStorage.
+
+-> Add table pagination or virtualization.
