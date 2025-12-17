@@ -24,7 +24,7 @@ A single-page dashboard visualizing notification data from the JSONPlaceholder A
 ```bash
 # Clone the repository
 git clone https://github.com/viraj1991/notifications-dashboard.git
-cd notifications-dashboard-gk
+cd notifications-dashboard
 
 # Install dependencies
 npm install
